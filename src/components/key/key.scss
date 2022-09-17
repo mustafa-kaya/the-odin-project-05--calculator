@@ -1,0 +1,46 @@
+.key {
+  // Geometry
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 15px;
+
+  // Colors
+  color: #383838;
+  background-color: #ededed;
+  border: 2px solid #383838;
+
+  // Fonts
+  font-size: 32px;
+  font-weight: 400;
+
+  &:hover {
+    background-color: #d4d4d4;
+  }
+
+  &:active {
+    background-color: #c2c2c2;
+  }
+
+  &--dark {
+    // Colors
+    color: #ededed;
+    background-color: #383838;
+
+    &:hover {
+      background-color: #545454;
+    }
+    &:active {
+      background-color: #171717;
+    }
+  }
+
+  &--long {
+    // Geometry
+    justify-content: start;
+    width: 154px;
+    padding-left: 27px;
+  }
+}
