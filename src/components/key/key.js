@@ -1,5 +1,5 @@
-function Key(context, classes = ["key"]) {
-  this.context = context;
+function Key(value, classes = ["key"]) {
+  this.value = value;
   this.classes = classes;
 
   this.generateHTML = function () {
@@ -11,7 +11,7 @@ function Key(context, classes = ["key"]) {
       div.classList.add(keyClass);
     });
     // Add textContent to div
-    div.innerHTML += context;
+    div.innerHTML += value;
     return div;
   };
 }
