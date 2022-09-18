@@ -7,6 +7,7 @@ let addButton = document.getElementById("add-button");
 let subtractButton = document.getElementById("subtract-button");
 let divideButton = document.getElementById("divide-button");
 let multiplyButton = document.getElementById("multiply-button");
+let periodButton = document.getElementById("period-button");
 let assignmentButton = document.getElementsByClassName("assignment-button");
 
 // Digits
@@ -36,6 +37,7 @@ export {
   subtractButton,
   divideButton,
   multiplyButton,
+  periodButton,
   assignmentButton,
   button0,
   button1,
