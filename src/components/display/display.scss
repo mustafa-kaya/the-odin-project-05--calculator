@@ -16,7 +16,7 @@
   font-size: 20px;
   font-weight: 300;
 
-  &__prevline {
+  &__prev {
     // Geometry
     display: flex;
     align-items: center;
@@ -27,7 +27,7 @@
     color: #adadad;
   }
 
-  &__mainline {
+  &__main {
     // Geometry
     display: flex;
     justify-content: flex-end;

@@ -1,7 +1,7 @@
 function initialDisplayView() {
   // prevline
   let displayPrevline = document
-    .querySelector(".display__prevline")
+    .querySelector(".display__prev")
     .querySelectorAll("div");
   displayPrevline.forEach((div) => {
     div.innerHTML = "";
