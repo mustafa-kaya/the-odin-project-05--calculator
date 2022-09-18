@@ -15,6 +15,43 @@
     <title>Calculator</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app" class="non-selectable">
+      <!-- .display START -->
+      <div class="display">
+        <div class="display__prev">
+          <div id="first-operand" class="first-operand">65</div>
+          <div id="operator" class="operator">+</div>
+          <div id="second-operand" class="second-operand">43</div>
+        </div>
+        <div class="display__main">
+          <div id="equal-sign" class="equal-sign">=</div>
+          <div id="current-operand" class="current-operand">12</div>
+        </div>
+      </div>
+      <!-- .display END -->
+
+      <!-- .keys START -->
+      <div class="keys">
+        <div id="clear-button" class="key key--long key--dark">CLEAR</div>
+        <div id="delete-button" class="key key--dark">&lt;</div>
+        <div id="divide-button" class="key key--dark">÷</div>
+        <div id="7-button" class="key">7</div>
+        <div id="8-button" class="key">8</div>
+        <div id="9-button" class="key">9</div>
+        <div id="multiply-button" class="key key--dark">×</div>
+        <div id="4-button" class="key">4</div>
+        <div id="5-button" class="key">5</div>
+        <div id="6-button" class="key">6</div>
+        <div id="subtract-button" class="key key--dark">-</div>
+        <div id="1-button" class="key">1</div>
+        <div id="2-button" class="key">2</div>
+        <div id="3-button" class="key">3</div>
+        <div id="add-button" class="key key--dark">+</div>
+        <div id="0-button" class="key key--long">0</div>
+        <div id="period-button" class="key">.</div>
+        <div id="assignment-button" class="key key--dark">=</div>
+      </div>
+      <!-- .keys END -->
+    </div>
   </body>
 </html>

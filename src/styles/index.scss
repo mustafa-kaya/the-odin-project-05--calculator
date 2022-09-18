@@ -1,0 +1,134 @@
+// links
+@use "./normalize";
+
+// GENERAL CSS
+body {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.non-selectable {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+#app {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 40px;
+  padding: 20px;
+  background-color: #ededed;
+  border-radius: 10px;
+}
+
+.key {
+  // Geometry
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 15px;
+
+  // Colors
+  color: #383838;
+  background-color: #ededed;
+  border: 2px solid #383838;
+
+  // Fonts
+  font-size: 32px;
+  font-weight: 400;
+
+  &:hover {
+    background-color: #d4d4d4;
+  }
+
+  &:active {
+    background-color: #c2c2c2;
+  }
+
+  &--dark {
+    // Colors
+    color: #ededed;
+    background-color: #383838;
+
+    &:hover {
+      background-color: #545454;
+    }
+    &:active {
+      background-color: #171717;
+    }
+  }
+
+  &--long {
+    // Geometry
+    justify-content: start;
+    width: 154px;
+    padding-left: 27px;
+  }
+}
+
+.display {
+  // Geometry
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 318px;
+  height: 120px;
+  border: 2px solid #383838;
+  border-radius: 10px;
+  padding: 22px 15px 15px 15px;
+
+  // Colors
+  background-color: #ededed;
+
+  // Fonts
+  font-size: 20px;
+  font-weight: 300;
+
+  &__prev {
+    // Geometry
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+
+    // Colors
+    color: #adadad;
+  }
+
+  &__main {
+    // Geometry
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+.equal-sign {
+  // Colors
+  color: #adadad;
+}
+
+.current-operand {
+  // Geometry
+  margin-left: 15px;
+
+  // Colors
+  color: #383838;
+
+  // Fonts
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.keys {
+  display: flex;
+  width: 318px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
