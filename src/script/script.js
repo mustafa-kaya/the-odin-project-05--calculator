@@ -45,19 +45,28 @@ EVENT LISTENERS
 // EventListeners for digits
 numbers.forEach((number) => {
   number.addEventListener("click", (e) => {
-    // Char limit to 12
-    if (currentOperand.textContent.length < 12) {
-      inputNumber(e);
+    if (equalSign.textContent !== "=") {
+      // Char limit to 12
+      if (currentOperand.textContent.length < 12) {
+        inputNumber(e);
+      }
+    } else {
+      clearDisplay();
+      if (currentOperand.textContent.length < 12) {
+        inputNumber(e);
+      }
     }
   });
 });
 
 // EventListeners for period
 periodButton.addEventListener("click", () => {
-  let arr = [...currentOperand.textContent];
-  // We protect us for double or triple period
-  if (!arr.includes(".")) {
-    currentOperand.textContent += ".";
+  if (equalSign.textContent !== "=") {
+    let arr = [...currentOperand.textContent];
+    // We protect us for double or triple period
+    if (!arr.includes(".")) {
+      currentOperand.textContent += ".";
+    }
   }
 });
 
@@ -75,7 +84,7 @@ operators.forEach((operator) => {
 });
 
 assignmentButton.addEventListener("click", () => {
-  if (firstOperand.textContent !== "") {
+  if (firstOperand.textContent !== "" && equalSign.textContent !== "=") {
     secondOperand.textContent = currentOperand.textContent;
     equalSign.textContent = "=";
     let number1 = parseFloat(firstOperand.textContent);
@@ -101,11 +110,13 @@ assignmentButton.addEventListener("click", () => {
 *********************************/
 // when I call this function it append to a new char to 'currentOperand'
 function inputNumber(e) {
-  if (currentOperand.textContent === "0") {
+  if (currentOperand.textContent === "0" && equalSign.textContent !== "=") {
     currentOperand.textContent = "";
     currentOperand.textContent += e.target.textContent;
-  } else {
+    console.log("IF");
+  } else if (equalSign.textContent !== "=") {
     currentOperand.textContent += e.target.textContent;
+    console.log("ELSE");
   }
 }
 
@@ -120,19 +131,23 @@ function clearDisplay() {
 clearDisplay();
 
 function deleteNumber() {
-  let tempArray = [...currentOperand.textContent];
-  tempArray.pop();
-  let tempString = tempArray.join("");
-  currentOperand.textContent = tempString;
+  if (equalSign.textContent !== "=") {
+    let tempArray = [...currentOperand.textContent];
+    tempArray.pop();
+    let tempString = tempArray.join("");
+    currentOperand.textContent = tempString;
+  }
 }
 
 function clickOperator(e) {
-  if (operatorSign.textContent === "") {
+  if (
+    operatorSign.textContent === "" &&
+    currentOperand.textContent !== "" &&
+    equalSign.textContent !== "="
+  ) {
     firstOperand.textContent = currentOperand.textContent;
     operatorSign.textContent = e.target.textContent;
     currentOperand.textContent = "";
-  } else {
-    operatorSign.textContent = e.target.textContent;
   }
 }
 
