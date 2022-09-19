@@ -25,7 +25,7 @@ let button9 = document.getElementById("9-button");
 // Display elements
 let firstOperand = document.getElementById("first-operand");
 let secondOperand = document.getElementById("second-operand");
-let operator = document.getElementById("operator");
+let operatorSign = document.getElementById("operator-sign");
 let equalSign = document.getElementById("equal-sign");
 let currentOperand = document.getElementById("current-operand");
 
@@ -51,7 +51,7 @@ export {
   button9,
   firstOperand,
   secondOperand,
-  operator,
+  operatorSign,
   equalSign,
   currentOperand,
 };

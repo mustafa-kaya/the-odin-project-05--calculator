@@ -19,7 +19,7 @@ import {
   button9,
   firstOperand,
   secondOperand,
-  operator,
+  operatorSign,
   equalSign,
   currentOperand,
 } from "./elements";
@@ -36,6 +36,8 @@ let numbers = [
   button8,
   button9,
 ];
+
+let operators = [addButton, subtractButton, divideButton, multiplyButton];
 
 /********************************* 
 EVENT LISTENERS
@@ -65,6 +67,15 @@ clearButton.addEventListener("click", clearDisplay);
 // EventListener for Delete button
 deleteButton.addEventListener("click", deleteNumber);
 
+// Event Listener for operators
+// Eger operatore tiklanirsa first operandin degeri degisecek
+operators.forEach((operator) => {
+  operator.addEventListener("click", (e) => {
+    firstOperand.textContent = currentOperand.textContent;
+    currentOperand.textContent = "";
+  });
+});
+
 /********************************* 
  FUNCTIONS
 *********************************/
@@ -81,7 +92,7 @@ function inputNumber(e) {
 function clearDisplay() {
   firstOperand.textContent = "";
   secondOperand.textContent = "";
-  operator.textContent = "";
+  operatorSign.textContent = "";
   equalSign.textContent = "";
   currentOperand.textContent = "0";
 }
