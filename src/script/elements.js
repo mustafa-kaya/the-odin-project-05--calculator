@@ -8,7 +8,7 @@ let subtractButton = document.getElementById("subtract-button");
 let divideButton = document.getElementById("divide-button");
 let multiplyButton = document.getElementById("multiply-button");
 let periodButton = document.getElementById("period-button");
-let assignmentButton = document.getElementsByClassName("assignment-button");
+let assignmentButton = document.getElementById("assignment-button");
 
 // Digits
 let button0 = document.getElementById("0-button");
