@@ -44,7 +44,7 @@ EVENT LISTENERS
 *********************************/
 // EventListeners for digits
 numbers.forEach((number) => {
-  number.addEventListener("click", function (e) {
+  number.addEventListener("click", (e) => {
     // Char limit to 12
     if (currentOperand.textContent.length < 12) {
       inputNumber(e);
@@ -68,11 +68,9 @@ clearButton.addEventListener("click", clearDisplay);
 deleteButton.addEventListener("click", deleteNumber);
 
 // Event Listener for operators
-// Eger operatore tiklanirsa first operandin degeri degisecek
 operators.forEach((operator) => {
   operator.addEventListener("click", (e) => {
-    firstOperand.textContent = currentOperand.textContent;
-    currentOperand.textContent = "";
+    clickOperator(e);
   });
 });
 
@@ -104,4 +102,14 @@ function deleteNumber() {
   tempArray.pop();
   let tempString = tempArray.join("");
   currentOperand.textContent = tempString;
+}
+
+function clickOperator(e) {
+  if (operatorSign.textContent === "") {
+    firstOperand.textContent = currentOperand.textContent;
+    operatorSign.textContent = e.target.textContent;
+    currentOperand.textContent = "";
+  } else {
+    operatorSign.textContent = e.target.textContent;
+  }
 }
