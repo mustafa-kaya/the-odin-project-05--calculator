@@ -74,6 +74,28 @@ operators.forEach((operator) => {
   });
 });
 
+assignmentButton.addEventListener("click", () => {
+  if (firstOperand.textContent !== "") {
+    secondOperand.textContent = currentOperand.textContent;
+    equalSign.textContent = "=";
+    let number1 = parseFloat(firstOperand.textContent);
+    let number2 = parseFloat(secondOperand.textContent);
+    if (operatorSign.textContent === "+") {
+      let result = number1 + number2;
+      displayLimitControl(result);
+    } else if (operatorSign.textContent === "-") {
+      let result = number1 - number2;
+      displayLimitControl(result);
+    } else if (operatorSign.textContent === "×") {
+      let result = number1 * number2;
+      displayLimitControl(result);
+    } else if (operatorSign.textContent === "÷") {
+      let result = number1 / number2;
+      displayLimitControl(result);
+    }
+  }
+});
+
 /********************************* 
  FUNCTIONS
 *********************************/
@@ -112,4 +134,12 @@ function clickOperator(e) {
   } else {
     operatorSign.textContent = e.target.textContent;
   }
+}
+
+function displayLimitControl(resultInt) {
+  let result = resultInt.toString();
+  if (result.length > 12) {
+    result = result.substr(0, 12);
+  }
+  currentOperand.textContent = result;
 }
