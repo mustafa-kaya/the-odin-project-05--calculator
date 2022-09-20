@@ -59,6 +59,13 @@ numbers.forEach((number) => {
   });
 });
 
+// Keydown EventListeners for digits
+window.addEventListener("keydown", (e) => {
+  if (/\d/.test(e.key)) {
+    inputKeydownNumber(e);
+  }
+});
+
 // EventListeners for period
 periodButton.addEventListener("click", () => {
   if (equalSign.textContent !== "=") {
@@ -70,11 +77,38 @@ periodButton.addEventListener("click", () => {
   }
 });
 
+// Keydown EventListeners for period
+window.addEventListener("keydown", (e) => {
+  if (e.key === ".") {
+    if (equalSign.textContent !== "=") {
+      let arr = [...currentOperand.textContent];
+      // We protect us for double or triple period
+      if (!arr.includes(".")) {
+        currentOperand.textContent += ".";
+      }
+    }
+  }
+});
+
 // EventListener for CLEAR button
 clearButton.addEventListener("click", clearDisplay);
 
+// Keydown EventListener for CLEAR button
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    clearDisplay();
+  }
+});
+
 // EventListener for Delete button
 deleteButton.addEventListener("click", deleteNumber);
+
+// Keydown EventListener for Delete button
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Backspace") {
+    deleteNumber();
+  }
+});
 
 // Event Listener for operators
 operators.forEach((operator) => {
@@ -83,6 +117,20 @@ operators.forEach((operator) => {
   });
 });
 
+// Keydown EventListener for operators
+window.addEventListener("keydown", (e) => {
+  if (e.key === "+") {
+    keydownOperator(e);
+  } else if (e.key === "-") {
+    keydownOperator(e);
+  } else if (e.key === "*") {
+    keydownOperator(e);
+  } else if (e.key === "/") {
+    keydownOperator(e);
+  }
+});
+
+// Click EventListener for equal Button
 assignmentButton.addEventListener("click", () => {
   if (firstOperand.textContent !== "" && equalSign.textContent !== "=") {
     secondOperand.textContent = currentOperand.textContent;
@@ -98,9 +146,34 @@ assignmentButton.addEventListener("click", () => {
     } else if (operatorSign.textContent === "×") {
       let result = number1 * number2;
       displayLimitControl(result);
-    } else if (operatorSign.textContent === "÷") {
+    } else if (operatorSign.textContent === "/") {
       let result = number1 / number2;
       displayLimitControl(result);
+    }
+  }
+});
+
+// Keyboard EventListener for equal Button
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === "=") {
+    if (firstOperand.textContent !== "" && equalSign.textContent !== "=") {
+      secondOperand.textContent = currentOperand.textContent;
+      equalSign.textContent = "=";
+      let number1 = parseFloat(firstOperand.textContent);
+      let number2 = parseFloat(secondOperand.textContent);
+      if (operatorSign.textContent === "+") {
+        let result = number1 + number2;
+        displayLimitControl(result);
+      } else if (operatorSign.textContent === "-") {
+        let result = number1 - number2;
+        displayLimitControl(result);
+      } else if (operatorSign.textContent === "×") {
+        let result = number1 * number2;
+        displayLimitControl(result);
+      } else if (operatorSign.textContent === "/") {
+        let result = number1 / number2;
+        displayLimitControl(result);
+      }
     }
   }
 });
@@ -113,10 +186,17 @@ function inputNumber(e) {
   if (currentOperand.textContent === "0" && equalSign.textContent !== "=") {
     currentOperand.textContent = "";
     currentOperand.textContent += e.target.textContent;
-    console.log("IF");
   } else if (equalSign.textContent !== "=") {
     currentOperand.textContent += e.target.textContent;
-    console.log("ELSE");
+  }
+}
+
+function inputKeydownNumber(e) {
+  if (currentOperand.textContent === "0" && equalSign.textContent !== "=") {
+    currentOperand.textContent = "";
+    currentOperand.textContent += e.key;
+  } else if (equalSign.textContent !== "=") {
+    currentOperand.textContent += e.key;
   }
 }
 
@@ -146,7 +226,27 @@ function clickOperator(e) {
     equalSign.textContent !== "="
   ) {
     firstOperand.textContent = currentOperand.textContent;
-    operatorSign.textContent = e.target.textContent;
+    if (e.target.textContent === "÷") {
+      operatorSign.textContent = "/";
+    } else {
+      operatorSign.textContent = e.target.textContent;
+    }
+    currentOperand.textContent = "";
+  }
+}
+
+function keydownOperator(e) {
+  if (
+    operatorSign.textContent === "" &&
+    currentOperand.textContent !== "" &&
+    equalSign.textContent !== "="
+  ) {
+    firstOperand.textContent = currentOperand.textContent;
+    if (e.key === "*") {
+      operatorSign.textContent = "×";
+    } else {
+      operatorSign.textContent = e.key;
+    }
     currentOperand.textContent = "";
   }
 }

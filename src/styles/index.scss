@@ -25,6 +25,38 @@ body {
   border-radius: 10px;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header {
+  font-size: 48px;
+  font-family: "Work Sans", sans-serif;
+  color: #0c1021;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+
+footer {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  bottom: 0;
+  width: 100%;
+  position: fixed;
+  height: 40px;
+  text-align: center;
+
+  a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #0c1021;
+  }
+}
+
 .key {
   // Geometry
   display: inline-flex;
